@@ -9,7 +9,7 @@ class Board
     board[position - 1] = if player == 1
                             'X'
                           else
-                            'O'
+                            '●'
                           end
     puts "|#{board[6]}||#{board[7]}||#{board[8]}|"
     puts "|#{board[3]}||#{board[4]}||#{board[5]}|"
