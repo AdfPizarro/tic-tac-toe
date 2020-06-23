@@ -1,4 +1,4 @@
- 
+
 AllCops:
   Exclude:
     - "Guardfile"
@@ -9,7 +9,7 @@ AllCops:
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
-  Max: 20
+  Max: 18
 Metrics/AbcSize:
   Max: 50
 Metrics/ClassLength:
@@ -49,4 +49,3 @@ Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
   Enabled: false
-  
