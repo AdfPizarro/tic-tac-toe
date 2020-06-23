@@ -19,4 +19,21 @@ class Board
     puts "|#{board[3]}||#{board[4]}||#{board[5]}|"
     puts "|#{board[0]}||#{board[1]}||#{board[2]}|"
   end
+
+
+end
+
+
+class Win
+
+  def initialize
+    @combinations = [[0,1,2], [3,4,5], [6,7,8],[0,3,6], [1,4,7], [2,5,8], [6,4,2], [8,4,0]]
+
+  end
+
+  def check_board(board)
+    @combinations.each { |n| return false if board.board[n[0]] == board.board[n[1]] && board.board[n[1]] == board.board[n[2]]}
+    return true
+
+  end
 end

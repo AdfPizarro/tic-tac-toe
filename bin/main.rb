@@ -2,14 +2,19 @@
 require_relative "./logic.rb"
 
 board = Board.new((1..9))
+win = Win.new
+
 continue=true
 valid_value=false
+game=true
+
+
 
 puts "Tic tac toe game"
 board.draw_board()
 
 
-while continue
+while game
 
   valid_value=false
   until valid_value do
@@ -17,6 +22,7 @@ while continue
     valid_value=board.set_board(1, gets.chomp.to_i)
     board.draw_board()
   end
+  game=win.check_board(board)
 
   valid_value=false
   until valid_value do
@@ -24,10 +30,13 @@ while continue
     valid_value=board.set_board(2, gets.chomp.to_i)
     board.draw_board()
   end
+  game=win.check_board(board)
 
-  puts "Do you want to continue Y/N"
-  continue = gets.chomp == "Y" ? true : false
+
 
 end
+
+puts "Do you want to continue Y/N"
+continue = gets.chomp == "Y" ? true : false
 
 puts "Tanks for playing"
