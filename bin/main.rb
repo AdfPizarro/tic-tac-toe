@@ -1,28 +1,33 @@
 #!/usr/bin/env ruby
-class Board
-  attr_accessor :board
-  def initialize(arr)
-    self.board = arr.to_a
-  end
-
-  def set_board(player, position)
-    board[position - 1] = if player == 1
-                            'X'
-                          else
-                            '●'
-                          end
-    puts "|#{board[6]}||#{board[7]}||#{board[8]}|"
-    puts "|#{board[3]}||#{board[4]}||#{board[5]}|"
-    puts "|#{board[0]}||#{board[1]}||#{board[2]}|"
-  end
-end
+require_relative "./logic.rb"
 
 board = Board.new((1..9))
+continue=true
+valid_value=false
 
-puts 'player 1: Choose the position for the X'
+puts "Tic tac toe game"
+board.draw_board()
 
-print board.set_board(1, gets.chomp.to_i)
 
-puts 'player 2: Choose the position for O'
+while continue
 
-print board.set_board(2, gets.chomp.to_i)
+  valid_value=false
+  until valid_value do
+    puts 'player 1: Choose the position for the X'
+    valid_value=board.set_board(1, gets.chomp.to_i)
+    board.draw_board()
+  end
+
+  valid_value=false
+  until valid_value do
+    puts 'player 2: Choose the position for O'
+    valid_value=board.set_board(2, gets.chomp.to_i)
+    board.draw_board()
+  end
+
+  puts "Do you want to continue Y/N"
+  continue = gets.chomp == "Y" ? true : false
+
+end
+
+puts "Tanks for playing"
