@@ -1,42 +1,44 @@
 #!/usr/bin/env ruby
-require_relative "./logic.rb"
+board = (1..9).to_a
 
-board = Board.new((1..9))
-win = Win.new
+continue = true
+valid_value = false
+game = true
 
-continue=true
-valid_value=false
-game=true
+puts 'Tic tac toe game'
 
-
-
-puts "Tic tac toe game"
-board.draw_board()
-
-
-while game
-
-  valid_value=false
-  until valid_value do
-    puts 'player 1: Choose the position for the X'
-    valid_value=board.set_board(1, gets.chomp.to_i)
-    board.draw_board()
+while continue
+  puts "|#{board[6]}||#{board[7]}||#{board[8]}|"
+  puts "|#{board[3]}||#{board[4]}||#{board[5]}|"
+  puts "|#{board[0]}||#{board[1]}||#{board[2]}|"
+  player = 1
+  while game
+   
+    until valid_value
+      if player.odd?
+        puts 'player 1: Choose the position for the X'
+      else
+        puts 'player 2: Choose the position for the ●'
+      end
+      gets.chomp.to_i
+      puts "invalid value" if valid_value == true
+      puts "|#{board[6]}||#{board[7]}||#{board[8]}|"
+      puts "|#{board[3]}||#{board[4]}||#{board[5]}|"
+      puts "|#{board[0]}||#{board[1]}||#{board[2]}|"
+      valid_value = true
+    end
+    player += 1
+    puts "checking if the game ends"
+    game = false
+    continue = false
   end
-  game=win.check_board(board)
-
-  valid_value=false
-  until valid_value do
-    puts 'player 2: Choose the position for O'
-    valid_value=board.set_board(2, gets.chomp.to_i)
-    board.draw_board()
-  end
-  game=win.check_board(board)
-
-
-
+  
+  puts "player 1 has win x times"
+  puts "player 2 has win x times"
+  puts "Draws x times"
+  puts 'Do you want to continue Y/N'
+  continue = gets.chomp.upcase == 'Y'
+  game = true
 end
 
-puts "Do you want to continue Y/N"
-continue = gets.chomp == "Y" ? true : false
-
-puts "Tanks for playing"
+puts 'Thanks for playing'
