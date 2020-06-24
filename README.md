@@ -9,13 +9,14 @@
 
 ## Getting Started
 ​
-To get a local copy up and running follow these simple example steps.
-​
-`git clone https://github.com/AdfPizarro/tic-tac-toe`
+  To get a local copy up and running follow these simple example steps.
 
-Go to the bin folder and run the main.rb file
-you can do it by right clicking it and click on run or in the console
-by typing `./main.rb` in the console
+  Clone the project using the next command:
+  `​git clone https://github.com/AdfPizarro/tic-tac-toe`
+
+  Start the game typing the next command in terminal:
+  `bin/main.rb`
+
 ​
 ### Instructions
 ​
