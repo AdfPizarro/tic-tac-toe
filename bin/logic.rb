@@ -9,15 +9,15 @@ class Board
       board[position - 1] = player.odd? ? 'X' : '●'
       return true
     else
-      puts "Invalid value"
       return false
     end
   end
 
   def draw_board
-    puts "|#{board[6]}|#{board[7]}|#{board[8]}|"
-    puts "|#{board[3]}|#{board[4]}|#{board[5]}|"
-    puts "|#{board[0]}|#{board[1]}|#{board[2]}|"
+   top = "|#{board[6]}|#{board[7]}|#{board[8]}|\n" 
+   top += "|#{board[3]}|#{board[4]}|#{board[5]}|\n"
+   top += "|#{board[0]}|#{board[1]}|#{board[2]}|"
+  return top
   end
 
 end

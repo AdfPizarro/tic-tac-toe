@@ -9,9 +9,11 @@ valid_value = false
 game = true
 
 puts 'Tic tac toe game'
-board.draw_board
+
 while continue
+  puts board.draw_board
   player = 1
+  win.game_status = ""
   while game
     valid_value = false
     until valid_value
@@ -21,7 +23,8 @@ while continue
         puts 'player 2: Choose the position for the ●'
       end
       valid_value = board.set_board(player, gets.chomp.to_i)
-      board.draw_board
+      puts "invalid value" if valid_value == false
+      puts board.draw_board
     end
     player += 1
     game = win.check_board(board)
