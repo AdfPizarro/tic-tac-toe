@@ -3,10 +3,10 @@ require_relative './logic.rb'
 
 continue = true
 
-def game_run
-  board = Board.new((1..9))
-  win = Win.new
-  win.game_status = ''
+board = Board.new((1..9))
+win = Win.new
+
+def game_run(board, win)
   game = true
   player = 1
   symbol = 'X'
@@ -24,18 +24,19 @@ def game_run
     game = win.check_board(board)
   end
   win.score(player)
-  puts "player 1 has win #{win.player1}"
-  puts "player 2 has win #{win.player2}"
-  puts "Draws #{win.draw}"
 end
 
 while continue
   puts 'Tic tac toe game'
-  game_run
+  game_run(board, win)
+  board.board = (1..9).to_a
+  win.game_status = ''
 
+  puts "player 1 has win #{win.player1}"
+  puts "player 2 has win #{win.player2}"
+  puts "Draws #{win.draw}"
   puts 'Do you want to continue Y/N'
   continue = gets.chomp.upcase == 'Y'
-
 end
 
 puts 'Thanks for playing'
