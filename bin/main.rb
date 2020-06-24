@@ -1,39 +1,42 @@
 #!/usr/bin/env ruby
-board = (1..9).to_a
+require_relative '../lib/logic.rb'
 
 continue = true
-valid_value = false
-game = true
 
-puts 'Tic tac toe game'
+board = Board.new((1..9))
+win = Win.new
 
-while continue
-  puts "|#{board[6]}||#{board[7]}||#{board[8]}|"
-  puts "|#{board[3]}||#{board[4]}||#{board[5]}|"
-  puts "|#{board[0]}||#{board[1]}||#{board[2]}|"
+def game_run(board, win)
+  game = true
   player = 1
+  symbol = 'X'
+  puts board.draw_board
   while game
+    valid_value = false
     until valid_value
-      puts "player #{player}: Choose the position for the X"
-      gets.chomp.to_i
-      puts 'invalid value'
-      puts "|#{board[6]}||#{board[7]}||#{board[8]}|"
-      puts "|#{board[3]}||#{board[4]}||#{board[5]}|"
-      puts "|#{board[0]}||#{board[1]}||#{board[2]}|"
-      valid_value = true
+      puts "player #{player}: Choose the position for the #{symbol}"
+      valid_value = board.set_board(player, gets.chomp.to_i)
+      puts 'invalid value' if valid_value == false
+      puts board.draw_board
     end
     player = player == 1 ? 2 : 1
-    puts 'checking if the game ends'
-    game = false
-    continue = false
+    symbol = player == 1 ? 'X' : '●'
+    game = win.check_board(board)
   end
+  win.score(player)
+end
 
-  puts 'player 1 has win x times'
-  puts 'player 2 has win x times'
-  puts 'Draws x times'
+while continue
+  puts 'Tic tac toe game'
+  game_run(board, win)
+  board.board = (1..9).to_a
+  win.game_status = ''
+
+  puts "player 1 has win #{win.player1}"
+  puts "player 2 has win #{win.player2}"
+  puts "Draws #{win.draw}"
   puts 'Do you want to continue Y/N'
   continue = gets.chomp.upcase == 'Y'
-  game = true
 end
 
 puts 'Thanks for playing'
