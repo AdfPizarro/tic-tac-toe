@@ -61,9 +61,6 @@ Note: You need to do `bundle install` before executing the commands above.
 - Twitter: [@YahirCardona3](https://twitter.com/YahirCardona3)
 - Linkedin: [linkedin](https://www.linkedin.com/in/osmar-yahir-cardona-reyes-54b40b1a7/)
 
-- Github: [@yahir91](https://github.com/yahir91)
-- Twitter: [@YahirCardona3](https://twitter.com/YahirCa
-
 
 ## �� Contributing
 ​
