@@ -1,37 +1,33 @@
 #!/usr/bin/env ruby
-require_relative './logic.rb'
+require_relative '../lib/logic.rb'
 
 continue = true
 
 board = Board.new((1..9))
 win = Win.new
+players = Player.new
 
-def game_run(board, win)
+def game_run(board, win, players)
   game = true
-  player = 1
-  symbol = 'X'
   puts board.draw_board
   while game
     valid_value = false
     until valid_value
-      puts "player #{player}: Choose the position for the #{symbol}"
-      valid_value = board.set_board(player, gets.chomp.to_i)
+      puts players.switch_player
+      valid_value = board.set_board(players.player, gets.chomp.to_i)
       puts 'invalid value' if valid_value == false
       puts board.draw_board
     end
-    player = player == 1 ? 2 : 1
-    symbol = player == 1 ? 'X' : '●'
     game = win.check_board(board)
   end
-  win.score(player)
+  win.score(players.player)
 end
 
 while continue
   puts 'Tic tac toe game'
-  game_run(board, win)
-  board.board = (1..9).to_a
-  win.game_status = ''
-
+  game_run(board, win, players)
+  board.reset_board
+  win.reset_game
   puts "player 1 has win #{win.player1}"
   puts "player 2 has win #{win.player2}"
   puts "Draws #{win.draw}"
