@@ -1,19 +1,16 @@
 #!/usr/bin/env ruby
 require_relative './logic.rb'
 
-board = Board.new((1..9))
-win = Win.new
-
 continue = true
-game = true
-symbol = 'X'
 
-puts 'Tic tac toe game'
-
-while continue
-  puts board.draw_board
-  player = 1
+def game_run
+  board = Board.new((1..9))
+  win = Win.new
   win.game_status = ''
+  game = true
+  player = 1
+  symbol = 'X'
+  puts board.draw_board
   while game
     valid_value = false
     until valid_value
@@ -30,10 +27,15 @@ while continue
   puts "player 1 has win #{win.player1}"
   puts "player 2 has win #{win.player2}"
   puts "Draws #{win.draw}"
+end
+
+while continue
+  puts 'Tic tac toe game'
+  game_run
+
   puts 'Do you want to continue Y/N'
   continue = gets.chomp.upcase == 'Y'
-  game = true
-  board.board = (1..9).to_a
+
 end
 
 puts 'Thanks for playing'
