@@ -15,14 +15,14 @@ def game_run(board, score, players)
   while game
     valid_value = false
     until valid_value
-      puts players.switch_player
-      valid_value = board.set_board(players.player, gets.chomp.to_i)
+      puts "player #{players.player}: Choose the position for the #{players.symbol}"
+      valid_value = players.move(gets.chomp.to_i, board)
       puts 'invalid value' if valid_value == false
       puts board.draw_board
     end
     game = board.check_board
   end
-  score.score(players.player,board.game_status)
+  score.score(players.player, board.game_status)
 end
 
 while continue

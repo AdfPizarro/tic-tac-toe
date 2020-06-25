@@ -9,6 +9,14 @@ class Player
   def switch_player
     @player = player == 1 ? 2 : 1
     @symbol = player == 1 ? 'X' : '●'
-    "player #{player}: Choose the position for the #{symbol}"
+  end
+
+  def move(position, board)
+    if board.set_board(@player, position)
+      switch_player
+      true
+    else
+      false
+    end
   end
 end
