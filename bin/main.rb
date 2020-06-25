@@ -26,7 +26,6 @@ def game_run(board, score, players)
     game = board.check_board
   end
   score.score(players.player, board.game_status)
-
 end
 
 while continue
