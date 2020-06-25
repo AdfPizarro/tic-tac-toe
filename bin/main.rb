@@ -1,13 +1,15 @@
 #!/usr/bin/env ruby
-require_relative '../lib/logic.rb'
+require_relative '../lib/board.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/scores.rb'
 
 continue = true
 
 board = Board.new((1..9))
-win = Win.new
+score = Scores.new
 players = Player.new
 
-def game_run(board, win, players)
+def game_run(board, score, players)
   game = true
   puts board.draw_board
   while game
@@ -18,19 +20,18 @@ def game_run(board, win, players)
       puts 'invalid value' if valid_value == false
       puts board.draw_board
     end
-    game = win.check_board(board)
+    game = board.check_board
   end
-  win.score(players.player)
+  score.score(players.player,board.game_status)
 end
 
 while continue
   puts 'Tic tac toe game'
-  game_run(board, win, players)
+  game_run(board, score, players)
   board.reset_board
-  win.reset_game
-  puts "player 1 has win #{win.player1}"
-  puts "player 2 has win #{win.player2}"
-  puts "Draws #{win.draw}"
+  puts "player 1 has win #{score.player1}"
+  puts "player 2 has win #{score.player2}"
+  puts "Draws #{score.draw}"
   puts 'Do you want to continue Y/N'
   continue = gets.chomp.upcase == 'Y'
 end
