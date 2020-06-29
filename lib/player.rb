@@ -2,7 +2,7 @@ class Player
   attr_reader :player, :symbol
 
   def initialize
-    @player = 2
+    @player = 1
     @symbol = 'X'
   end
 

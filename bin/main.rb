@@ -30,9 +30,9 @@ end
 
 while continue
   puts 'Tic tac toe game'
-
-  game_run(board, score, players)
   board.reset_board
+  game_run(board, score, players)
+
   puts "player 1 has win #{score.player1}"
   puts "player 2 has win #{score.player2}"
   puts "Draws #{score.draw}"
