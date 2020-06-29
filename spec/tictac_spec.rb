@@ -1,5 +1,4 @@
 # spec/tictac_spec.rb
-require_relative '../bin/main.rb'
 require_relative '../lib/board.rb'
 require_relative '../lib/logic.rb'
 require_relative '../lib/player.rb'
