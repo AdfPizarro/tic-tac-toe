@@ -4,7 +4,7 @@ require_relative '../lib/board.rb'
 require_relative '../lib/player.rb'
 require_relative '../lib/scores.rb'
 
-continue = true
+continue = false
 
 board = Board.new((1..9))
 score = Scores.new
@@ -30,9 +30,9 @@ end
 
 while continue
   puts 'Tic tac toe game'
-
-  game_run(board, score, players)
   board.reset_board
+  game_run(board, score, players)
+
   puts "player 1 has win #{score.player1}"
   puts "player 2 has win #{score.player2}"
   puts "Draws #{score.draw}"
