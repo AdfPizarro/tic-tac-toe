@@ -43,6 +43,7 @@
 ​
 ## Commands
 
+
 # rubocop
 ​
 Note: You need to do `bundle install` before executing the commands above.
@@ -58,6 +59,7 @@ To run the unit testings you will need to install the gem rspect with the follow
 To see the test results run the following command
 
 `rspec --format documentation`
+
 ​
 ## Authors
 ​
