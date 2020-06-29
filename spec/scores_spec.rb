@@ -5,19 +5,19 @@ require_relative '../lib/board.rb'
 describe Scores do
   it 'Add score player 1' do
     scores = Scores.new
-    scores.score(1, "win")
+    scores.score(1, 'win')
     expect(scores.player1).to eql(1)
   end
 
   it 'Add score player 2' do
     scores = Scores.new
-    scores.score(2, "win")
+    scores.score(2, 'win')
     expect(scores.player2).to eql(1)
   end
 
   it 'Add score to draw count' do
     scores = Scores.new
-    scores.score(2, "draw_board")
+    scores.score(2, 'draw_board')
     expect(scores.draw).to eql(1)
   end
 
