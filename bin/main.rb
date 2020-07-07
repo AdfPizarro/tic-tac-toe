@@ -6,7 +6,7 @@ require_relative '../lib/scores.rb'
 
 continue = true
 
-board = Board.new((1..9))
+board = Board.new
 score = Scores.new
 players = Player.new
 
