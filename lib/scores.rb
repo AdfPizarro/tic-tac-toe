@@ -9,8 +9,7 @@ class Scores
 
   def score(player, game_status)
     if game_status == 'win'
-      if player == 1 ? @player1 += 1 : @player2 += 1
-      end
+      player == 1 ? @player1 += 1 : @player2 += 1
     else
       @draw += 1
     end
